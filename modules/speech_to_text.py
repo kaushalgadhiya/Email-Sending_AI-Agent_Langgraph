@@ -4,6 +4,7 @@ import sounddevice as sd
 import scipy.io.wavfile as wav
 import tempfile
 from dotenv import load_dotenv
+import streamlit as st
 
 def capture_voice():
     """
@@ -12,16 +13,16 @@ def capture_voice():
     try:
         import speech_recognition as sr
         
-        print("🎤 Using Google Speech Recognition...")
+        st.write("🎤 Using Google Speech Recognition...")
         recognizer = sr.Recognizer()
         
         with sr.Microphone() as source:
-            print("🎙️ Speak now...")
-            audio = recognizer.listen(source, timeout=5)
-            
+            recognizer.adjust_for_ambient_noise(source)
+            st.write("🎙️ Speak now...")
+            audio = recognizer.listen(source, timeout=5, phrase_time_limit=10)            
             text = recognizer.recognize_google(audio)
-            print(f"📝 Transcribed with Google: {text}")
+            st.write(f"📝 Transcribed with Google: {text}")
             return text
     except Exception as e:
-        print(f"❌ Google speech recognition failed: {e}")
+        st.write(f"❌ Google speech recognition failed: {e}")
         return ""
