@@ -1,5 +1,5 @@
-venv/
-.env/
+my_email_agent/
+.env
 __pycache__/
 *.pyc
 *.json
