@@ -3,7 +3,7 @@ import pandas as pd
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-SHEET_ID = "1Tv6vTnF9xCh7gQQGwb-XSGzULnV_ejgv60KTa6G5Kps"
+SHEET_ID = "<Enter Your Sheet ID>"
 SHEET_RANGE = "Sheet1!A:B"  # Adjust this if your sheet has a different name or range
 
 def get_email(name):
